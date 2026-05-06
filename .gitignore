@@ -5,3 +5,5 @@ PROGRESS.md
 .DS_Store
 dist/
 build/
+register.js
+test_logger.js

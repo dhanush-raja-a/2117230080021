@@ -18,20 +18,20 @@ app.get('/schedule', async (req, res) => {
         await Log("backend", "debug", "service", "Authentication token obtained successfully.");
 
         // 1. Fetch Depots
-        await Log("backend", "info", "api", "Fetching depots from test server...");
+        await Log("backend", "info", "service", "Fetching depots from test server...");
         const depotsResponse = await axios.get('http://20.207.122.201/evaluation-service/depots', {
             headers: { 'Authorization': `Bearer ${token}` }
         });
         const depots = depotsResponse.data.depots;
-        await Log("backend", "info", "api", `Successfully fetched ${depots.length} depots.`);
+        await Log("backend", "info", "service", `Fetched ${depots.length} depots.`);
 
         // 2. Fetch Vehicles
-        await Log("backend", "info", "api", "Fetching vehicles from test server...");
+        await Log("backend", "info", "service", "Fetching vehicles from test server...");
         const vehiclesResponse = await axios.get('http://20.207.122.201/evaluation-service/vehicles', {
             headers: { 'Authorization': `Bearer ${token}` }
         });
         const vehicles = vehiclesResponse.data.vehicles;
-        await Log("backend", "info", "api", `Successfully fetched ${vehicles.length} vehicles.`);
+        await Log("backend", "info", "service", `Fetched ${vehicles.length} vehicles.`);
 
         // 3. Run Scheduling for each Depot
         const results = depots.map(depot => {
